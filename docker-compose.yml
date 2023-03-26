@@ -1,0 +1,17 @@
+services:
+        db-postgres:
+                image: db_image
+                container_name: db_postgres_container
+                volumes:
+                        - ./data/db:/var/lib/postgresql/data
+                ports:
+                        - 5432:5432
+                          
+        web-app:
+                image: web_image 
+                container_name: web_app_container
+                ports:
+                        - 5000:5000
+                links:
+                        - db-postgres
+
